@@ -6,7 +6,7 @@ export function Apresentacao(){
     <DivPrincipal> 
       <h4>Pesquisa de confiança do consumidor</h4>
 
-      <Paragrafo>Está pesquisa tem como finalidade mensurar as confianças cognitiva, afetiva e comportamental com o objetivo de analizar os impactos em relação a lealdade.</Paragrafo>
+      <Paragrafo>Está pesquisa tem como finalidade mensurar as confianças cognitiva, afetiva e comportamental com o objetivo de analizar os impactos em relação a lealdade entre alunos e a <strong>instituição de ensino superior</strong>.</Paragrafo>
       <p><strong>Entrevistador:</strong> SAJ consultoria</p>
     </DivPrincipal>
   )

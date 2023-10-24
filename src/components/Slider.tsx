@@ -120,8 +120,13 @@ const div3: React.CSSProperties = {
 }
 
 const div4: React.CSSProperties = {
-  background: 'rgb(50 51 51)',
+  textAlign: 'justify',
+  background: '#ffffff',
+  color: '#1c1c1c',
   borderRadius: 4,
-  fontSize: '12px',
-  padding: 4
+  fontSize: '14px',
+  paddingRight: '8px',
+  paddingLeft: '8px',
+  paddingTop: '2px',
+  paddingBottom: '2px'
 }

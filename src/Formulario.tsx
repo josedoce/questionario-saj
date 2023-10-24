@@ -3,7 +3,9 @@ import './App.css'
 import { Slider } from './components/Slider'
 import { Campo } from './components/Campo'
 import { Apresentacao } from './components/Apresentacao'
+import styled from 'styled-components'
 import axios from 'axios'
+import iLoading from './assets/icons/loading.svg'
 
 interface F extends EventTarget {
   nome: HTMLInputElement;
@@ -32,6 +34,7 @@ interface PropsF {
 }
 
 export function Formulario(props: PropsF) {
+  const [isLoading, setIsLoading] = useState(false);
   const [count, setCount] = useState("00:00")
   const [tempoInicio, setTempoInicio] = useState("");
   
@@ -59,8 +62,11 @@ export function Formulario(props: PropsF) {
   },[])
 
   function handleSubmited(e: React.FormEvent<HTMLFormElement>){
+    setIsLoading(true)
     e.preventDefault()
     e.stopPropagation();
+    
+
     const {
       nome,
       isanonimo,
@@ -106,6 +112,7 @@ export function Formulario(props: PropsF) {
       .then((_: any)=>{
         props.onResponded()
       }).catch((_)=>{
+        setIsLoading(false)
         alert("Tente enviar de novo")
       })
       
@@ -116,27 +123,27 @@ export function Formulario(props: PropsF) {
     {
       id: 0,
       nomeAtributo: "pergunta1",
-      pergunta: "Sinto que a IES se interessa por mim."
+      pergunta: "Sinto que a instituição de ensino superior(IES) se interessa por mim."
     },
     {
       id: 1,
       nomeAtributo: "pergunta2",
-      pergunta: "Sinto que a IES demonstra atenção em relação a mim."
+      pergunta: "Sinto que a instituição de ensino superior(IES) demonstra atenção em relação a mim."
     },
     {
       id: 2,
       nomeAtributo: "pergunta3",
-      pergunta: "Sinto que, se eu tivesse algum problema com a IES, ela estará sempre pronta para me ouvir."
+      pergunta: "Sinto que, se eu tivesse algum problema com a instituição de ensino superior(IES), ela estará sempre pronta para me ouvir."
     },
     {
       id: 3,
       nomeAtributo: "pergunta4",
-      pergunta: "Sinto que, a IES apesar de ter seus interesses próprios, leva em consideração o que é melhor para mim também."
+      pergunta: "Sinto que, a instituição de ensino superior(IES) apesar de ter seus interesses próprios, leva em consideração o que é melhor para mim também."
     },
     {
       id: 4,
       nomeAtributo: "pergunta5",
-      pergunta: "Eu compartilho informações abertamente com a IES, pois ela não irá tirar vantagem de mim."
+      pergunta: "Eu compartilho informações abertamente com a instituição de ensino superior(IES), pois ela não irá tirar vantagem de mim."
     },
     {
       id: 5,
@@ -146,27 +153,27 @@ export function Formulario(props: PropsF) {
     {
       id: 6,
       nomeAtributo: "pergunta7",
-      pergunta: "Eu não monitoro possíveis mudanças, como, por exemplo, mudanças econômicas ou na legislação, porque sei que a IES não vai tirar vantagem destas mudanças."
+      pergunta: "Eu não monitoro possíveis mudanças, como, por exemplo, mudanças econômicas ou na legislação, porque sei que a instituição de ensino superior(IES) não vai tirar vantagem destas mudanças."
     },
     {
       id: 7,
       nomeAtributo: "pergunta8",
-      pergunta: "Dado o histórico de relacionamento com a IES, tenho bons motivos para acreditar nas informações fornecidas por ela."
+      pergunta: "Dado o histórico de relacionamento com a instituição de ensino superior(IES), tenho bons motivos para acreditar nas informações fornecidas por ela."
     },
     {
       id: 8,
       nomeAtributo: "pergunta9",
-      pergunta: "Dado o histórico de relacionamento com a IES, tenho bons motivos para duvidar da competência da instituição."
+      pergunta: "Dado o histórico de relacionamento com a instituição de ensino superior(IES), tenho bons motivos para duvidar da competência da instituição."
     },
     {
       id: 9,
       nomeAtributo: "pergunta10",
-      pergunta: "Dado o histórico de relacionamento com a IES, não tenho motivos para duvidar de sua eficiência."
+      pergunta: "Dado o histórico de relacionamento com a instituição de ensino superior(IES), não tenho motivos para duvidar de sua eficiência."
     },
     {
       id: 10,
       nomeAtributo: "pergunta11",
-      pergunta: "A empresa IES, constantemente se preocupa em manter seus serviços funcionando de maneira adequada."
+      pergunta: "A instituição de ensino superior(IES), constantemente se preocupa em manter seus serviços funcionando de maneira adequada."
     },
   ]
 
@@ -192,8 +199,13 @@ export function Formulario(props: PropsF) {
               nome={pergunta.nomeAtributo} />
           ))
         }
-        
-        <button type='submit'>responder pesquisa</button>
+        <LoadingContainer>
+         {
+          isLoading 
+          ? <img src={iLoading} width={64} height={64}/> 
+          : <button name='submitbutton' type='submit'>responder pesquisa</button>
+         }  
+        </LoadingContainer>
       </form>
     </>
     
@@ -201,3 +213,21 @@ export function Formulario(props: PropsF) {
 }
 
 
+const LoadingContainer = styled.div`
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  >button, img {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  >img {
+    user-drag: none;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+  }
+`;

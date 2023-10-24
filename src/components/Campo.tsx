@@ -27,7 +27,7 @@ export function Campo({nome}: Props){
       <div>
         <div>
           <label htmlFor=""><strong>Escreva seu nome</strong></label>
-          <input minLength={3} maxLength={32} onChange={handleValor} style={input1} type="text" name={nome} value={valor} placeholder='Fulano de tal' required />
+          <CampoNome minLength={3} maxLength={32} onChange={handleValor} style={input1} type="text" name={nome} value={valor} placeholder='Fulano de tal' required />
         </div>
 
         <div>
@@ -38,7 +38,7 @@ export function Campo({nome}: Props){
               <label> Sim</label>
             </RowLabel>
           </div>
-         
+      
           <div>
             <RowLabel>
               <input type="radio" name='isestudante' value={0} required/>
@@ -47,7 +47,7 @@ export function Campo({nome}: Props){
           </div>
           
         </div>
-
+        <hr style={{borderColor: '#ffffff7a'}}/>
         <div>
          
           <div>
@@ -94,13 +94,23 @@ const RowLabel = styled.div`
   }
 `;
 const input1: React.CSSProperties = {
-  color: "white",
-  margin: '0',
-  width: '100%',
-  paddingLeft: 8,
-  paddingRight: 8,
-  paddingTop: 8,
-  paddingBottom: 8,
-  background: 'rgb(50 51 51)',
+ 
+
 }
 
+const CampoNome = styled.input`
+  border-radius: 6px;
+  color: white;
+  margin: 0;
+  width: 100%;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  background: rgb(50 51 51);
+  border: 2px solid #d7cafd;
+  &:focus {
+    outline: none;
+    border: 2px solid #652cff;
+  }
+`
