@@ -100,10 +100,12 @@ export function Formulario(props: PropsF) {
       pergunta9: pergunta9.value,
       pergunta10: pergunta10.value,
       pergunta11: pergunta11.value,
-      temporesposta: count,
+      temporesposta: "00:"+count, //isso resolve o erro de formatação no excel
       tempoInicio: tempoInicio,
       tempoFinal: new Date().toLocaleTimeString("pt-br") 
     }
+
+    console.log(data)
 
     if(soma != 11){
       alert("Responda todas as perguntas.")
