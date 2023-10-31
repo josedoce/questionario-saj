@@ -12,7 +12,7 @@ export function BoasVindas(props: A) {
       <h3>Você poderia responder nossa pesquisa ?</h3>
       <Paragrafo>Somos uma consultoria, a SAJ. Estamos precisando de pessoas para responder ao nosso questionario.</Paragrafo>
       <h4>Não se preocupe, não demora!</h4>
-      <button onClick={props.onConfirm}>Vamo lá</button>
+      <button onClick={props.onConfirm}>Vamos lá</button>
     </DivPrincipal>
     
   )

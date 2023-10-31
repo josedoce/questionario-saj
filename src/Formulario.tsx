@@ -163,7 +163,7 @@ export function Formulario(props: PropsF) {
          {
           isLoading 
           ? <img src={iLoading} width={64} height={64}/> 
-          : <button name='submitbutton' type='submit'>responder pesquisa</button>
+          : <button name='submitbutton' type='submit'>Responder Pesquisa</button>
          }  
         </LoadingContainer>
       </form>
@@ -181,6 +181,7 @@ const LoadingContainer = styled.div`
   >button, img {
     margin-left: auto;
     margin-right: auto;
+    text-transform: uppercase;
   }
   >img {
     user-drag: none;
