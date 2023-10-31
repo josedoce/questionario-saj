@@ -12,8 +12,9 @@ interface Props {
   nome: string,
   pergunta: string,
   onMove: (hasMoved: boolean)=> void;
+  hidden: boolean;
 }
-export function Slider({nome, pergunta, onMove}: Props){
+export function Slider({nome, pergunta, onMove, hidden}: Props){
   const [hasMove, setHasMove] = useState(false)
   const [valor, setValor] = useState(4)
   const [emoji, setEmoji] = useState(emoji4);
@@ -52,7 +53,7 @@ export function Slider({nome, pergunta, onMove}: Props){
     }
   }
   return (
-    <DivPrincipal>
+    <DivPrincipal style={{display: (hidden?'none':'')}}>
       <span style={{marginBottom: 12}}>Pergunta {nome.match(/\d+/g)}</span>
       <div style={div4}>
         <p>{pergunta}</p>

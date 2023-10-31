@@ -1,0 +1,57 @@
+[
+    {
+      "id": 0,
+      "nomeAtributo": "pergunta1",
+      "pergunta": "Sinto que a instituição de ensino superior(IES) se interessa por mim."
+    },
+    {
+      "id": 1,
+      "nomeAtributo": "pergunta2",
+      "pergunta": "Sinto que a instituição de ensino superior(IES) demonstra atenção em relação a mim."
+    },
+    {
+      "id": 2,
+      "nomeAtributo": "pergunta3",
+      "pergunta": "Sinto que, se eu tivesse algum problema com a instituição de ensino superior(IES), ela estará sempre pronta para me ouvir."
+    },
+    {
+      "id": 3,
+      "nomeAtributo": "pergunta4",
+      "pergunta": "Sinto que, a instituição de ensino superior(IES) apesar de ter seus interesses próprios, leva em consideração o que é melhor para mim também."
+    },
+    {
+      "id": 4,
+      "nomeAtributo": "pergunta5",
+      "pergunta": "Eu compartilho informações abertamente com a instituição de ensino superior(IES), pois ela não irá tirar vantagem de mim."
+    },
+    {
+      "id": 5,
+      "nomeAtributo": "pergunta6",
+      "pergunta": "Eu não questiono as declarações deste prestador de serviços sobre sua competência."
+    },
+    {
+      "id": 6,
+      "nomeAtributo": "pergunta7",
+      "pergunta": "Eu não monitoro possíveis mudanças, como, por exemplo, mudanças econômicas ou na legislação, porque sei que a instituição de ensino superior(IES) não vai tirar vantagem destas mudanças."
+    },
+    {
+      "id": 7,
+      "nomeAtributo": "pergunta8",
+      "pergunta": "Dado o histórico de relacionamento com a instituição de ensino superior(IES), tenho bons motivos para acreditar nas informações fornecidas por ela."
+    },
+    {
+      "id": 8,
+      "nomeAtributo": "pergunta9",
+      "pergunta": "Dado o histórico de relacionamento com a instituição de ensino superior(IES), tenho bons motivos para duvidar da competência da instituição."
+    },
+    {
+      "id": 9,
+      "nomeAtributo": "pergunta10",
+      "pergunta": "Dado o histórico de relacionamento com a instituição de ensino superior(IES), não tenho motivos para duvidar de sua eficiência."
+    },
+    {
+      "id": 10,
+      "nomeAtributo": "pergunta11",
+      "pergunta": "A instituição de ensino superior(IES), constantemente se preocupa em manter seus serviços funcionando de maneira adequada."
+    }
+]

@@ -3,14 +3,23 @@ import '../css/range.less'
 import styled from 'styled-components';
 
 interface Props {
-  nome: string
+  nome: string,
+  onEstudante: (value: number)=> void;
 }
-export function Campo({nome}: Props){
+export function Campo({nome, onEstudante}: Props){
   const [checked, setChecked] = useState(0);
   const [valor, setValor] = useState("")
   function handleValor(e: React.ChangeEvent<HTMLInputElement>){
     const value = e.target.value
     setValor(value)
+  }
+
+  function handleRadios(value: number){
+    if(value == 0){
+      onEstudante(0)
+    }else{
+      onEstudante(1)
+    }
   }
 
   function handleChecked() {
@@ -31,17 +40,17 @@ export function Campo({nome}: Props){
         </div>
 
         <div>
-          <label htmlFor=""><strong>Você é estudante da instituição ?</strong></label>
+          <label htmlFor=""><strong>Você está estudando em alguma instituição neste momento ?</strong></label>
           <div>
             <RowLabel>
-              <input type="radio" name='isestudante' value={1} required/>
+              <input type="radio" name='isestudante' value={1} required onChange={()=> handleRadios(1)}/>
               <label> Sim</label>
             </RowLabel>
           </div>
       
           <div>
             <RowLabel>
-              <input type="radio" name='isestudante' value={0} required/>
+              <input type="radio" name='isestudante' value={0} required onChange={()=> handleRadios(0)}/>
               <label> Não</label>
             </RowLabel>
           </div>

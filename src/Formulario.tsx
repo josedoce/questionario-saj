@@ -6,6 +6,8 @@ import { Apresentacao } from './components/Apresentacao'
 import styled from 'styled-components'
 import axios from 'axios'
 import iLoading from './assets/icons/loading.svg'
+import { Informativo } from './components/Informativo'
+import perguntas from './assets/perguntas.json'
 
 interface F extends EventTarget {
   nome: HTMLInputElement;
@@ -105,10 +107,11 @@ export function Formulario(props: PropsF) {
       tempoFinal: new Date().toLocaleTimeString("pt-br") 
     }
 
-    console.log(data)
+    
 
     if(soma != 11){
       alert("Responda todas as perguntas.")
+      setIsLoading(false)
     }else{
       axios.post("https://diuzep.shop/api/salvar_questionario", data)
       .then((_: any)=>{
@@ -121,85 +124,40 @@ export function Formulario(props: PropsF) {
     }
   }
 
-  const perguntas = [
-    {
-      id: 0,
-      nomeAtributo: "pergunta1",
-      pergunta: "Sinto que a instituição de ensino superior(IES) se interessa por mim."
-    },
-    {
-      id: 1,
-      nomeAtributo: "pergunta2",
-      pergunta: "Sinto que a instituição de ensino superior(IES) demonstra atenção em relação a mim."
-    },
-    {
-      id: 2,
-      nomeAtributo: "pergunta3",
-      pergunta: "Sinto que, se eu tivesse algum problema com a instituição de ensino superior(IES), ela estará sempre pronta para me ouvir."
-    },
-    {
-      id: 3,
-      nomeAtributo: "pergunta4",
-      pergunta: "Sinto que, a instituição de ensino superior(IES) apesar de ter seus interesses próprios, leva em consideração o que é melhor para mim também."
-    },
-    {
-      id: 4,
-      nomeAtributo: "pergunta5",
-      pergunta: "Eu compartilho informações abertamente com a instituição de ensino superior(IES), pois ela não irá tirar vantagem de mim."
-    },
-    {
-      id: 5,
-      nomeAtributo: "pergunta6",
-      pergunta: "Eu não questiono as declarações deste prestador de serviços sobre sua competência."
-    },
-    {
-      id: 6,
-      nomeAtributo: "pergunta7",
-      pergunta: "Eu não monitoro possíveis mudanças, como, por exemplo, mudanças econômicas ou na legislação, porque sei que a instituição de ensino superior(IES) não vai tirar vantagem destas mudanças."
-    },
-    {
-      id: 7,
-      nomeAtributo: "pergunta8",
-      pergunta: "Dado o histórico de relacionamento com a instituição de ensino superior(IES), tenho bons motivos para acreditar nas informações fornecidas por ela."
-    },
-    {
-      id: 8,
-      nomeAtributo: "pergunta9",
-      pergunta: "Dado o histórico de relacionamento com a instituição de ensino superior(IES), tenho bons motivos para duvidar da competência da instituição."
-    },
-    {
-      id: 9,
-      nomeAtributo: "pergunta10",
-      pergunta: "Dado o histórico de relacionamento com a instituição de ensino superior(IES), não tenho motivos para duvidar de sua eficiência."
-    },
-    {
-      id: 10,
-      nomeAtributo: "pergunta11",
-      pergunta: "A instituição de ensino superior(IES), constantemente se preocupa em manter seus serviços funcionando de maneira adequada."
-    },
-  ]
-
   const [soma, setSoma] = useState(0)
+  const [exibirPerguntas, setExibirPerguntas] = useState(false);
   function handleInputSliderValidate(hasMove: boolean){
     if(hasMove){
       setSoma(soma + 1);
     }
   }
-
+  function handleEstudante(value: number){
+    if(value == 0){
+      setExibirPerguntas(true)
+      setSoma(11)
+    }else{
+      setExibirPerguntas(false)
+      setSoma(0)
+    }
+  }
   return (
     <>
       <Apresentacao />
       <form onSubmit={(e)=>handleSubmited(e)}>
-        <Campo nome='nome'/>
+        <Campo nome='nome' onEstudante={handleEstudante}/>
+        <Informativo hidden={exibirPerguntas} />
         {
-          perguntas.map((pergunta)=>(
 
-            <Slider
-              onMove={handleInputSliderValidate}
-              key={pergunta.id}
-              pergunta={pergunta.pergunta}
-              nome={pergunta.nomeAtributo} />
-          ))
+          
+            perguntas.map((pergunta)=>(
+
+              <Slider
+                hidden={exibirPerguntas}
+                onMove={handleInputSliderValidate}
+                key={pergunta.id}
+                pergunta={pergunta.pergunta}
+                nome={pergunta.nomeAtributo} />
+            ))
         }
         <LoadingContainer>
          {
